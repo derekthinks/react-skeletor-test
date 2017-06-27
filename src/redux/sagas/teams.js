@@ -8,12 +8,15 @@ import { actions as currentActions, types as currentTypes } from '../modules/tea
 import { actions as errorActions } from '../modules/errors';
 
 export function* fetchTeamsSaga() {
-  const { teams, errors } = yield call(TeamsAPI.fetchTeams, {
+  const { teams, errors, serverError } = yield call(TeamsAPI.fetchTeams, {
     include: 'memberships,attributes',
     xlatAttributes: true,
   });
 
-  if (errors) {
+  if (serverError) {
+    yield put(errorActions.setSystemError(serverError));
+    yield put(push('/system-error'));
+  } else if (errors) {
     yield put(allActions.setTeamsErrors(errors));
   } else {
     yield put(allActions.setTeams(teams));

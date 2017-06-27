@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { compose } from 'recompose';
 import { loadable } from 'react-kinetic-core';
 import { actions } from '../../redux/modules/team';
 
@@ -12,8 +13,10 @@ export const mapStateToProps = ({ profile, current_team }) => ({
 });
 export const mapDispatchToProps = actions;
 
-const LoadableTeams = loadable({
-  onMount: props => props.match.params.teamSlug !== 'new' && props.fetchTeam(props.match.params.teamSlug),
-  onUnmount: props => props.clearTeam(),
-})(TeamView);
-export const TeamContainer = connect(mapStateToProps, mapDispatchToProps)(LoadableTeams);
+export const TeamContainer = compose(
+  connect(mapStateToProps, mapDispatchToProps),
+  loadable({
+    onMount: props => props.match.params.teamSlug !== 'new' && props.fetchTeam(props.match.params.teamSlug),
+    onUnmount: props => props.clearTeam(),
+  }),
+)(TeamView);

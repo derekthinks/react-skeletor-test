@@ -23,21 +23,23 @@ const Field = props =>
 
 export const Profile = ({ handleSubmit, fields, loading, apiErrors }) =>
   <DocumentTitle title="Profile">
-    {loading && <p>Loading profile information...</p>}
-    {apiErrors.map(error => <p>{error}</p>)}
-    <form onSubmit={handleSubmit} noValidate>
-      <div>
-        <label htmlFor="username">Username</label>
-        <Field type="text" id="username" controls={fields.username} disabled={loading} />
-      </div>
-      <div>
-        <label htmlFor="displayName">Display Name</label>
-        <Field type="text" id="displayName" controls={fields.displayName} disabled={loading} />
-      </div>
-      <div>
-        <label htmlFor="email">Email</label>
-        <Field type="email" id="email" controls={fields.email} disabled={loading} />
-      </div>
-      <button type="submit" disabled={loading}>Submit</button>
-    </form>
+    <div>
+      {loading && <p>Loading profile information...</p>}
+      {apiErrors.map(error => <p>{error}</p>)}
+      <form onSubmit={handleSubmit} noValidate>
+        <div>
+          <label htmlFor="username">Username</label>
+          <Field type="text" id="username" controls={fields.username} disabled={loading} />
+        </div>
+        <div>
+          <label htmlFor="displayName">Display Name</label>
+          <Field type="text" id="displayName" controls={fields.displayName} disabled={loading} />
+        </div>
+        <div>
+          <label htmlFor="email">Email</label>
+          <Field type="email" id="email" controls={fields.email} disabled={loading} />
+        </div>
+        <button type="submit" disabled={loading}>Submit</button>
+      </form>
+    </div>
   </DocumentTitle>;

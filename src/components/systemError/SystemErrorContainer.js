@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
+import { compose } from 'recompose';
 import { loadable } from 'react-kinetic-core';
-import { actions } from '../redux/modules/errors';
+import { actions } from '../../redux/modules/errors';
 
 import { SystemError } from './SystemError';
 
@@ -10,8 +11,10 @@ export const mapStateToProps = ({ errors }) => ({
 });
 export const mapDispatchToProps = actions;
 
-const LoadableSystemError = loadable({
-  onUnmount: props => props.clearSystemError(),
-})(SystemError);
-export const SystemErrorContainer =
-  connect(mapStateToProps, mapDispatchToProps)(LoadableSystemError);
+export const SystemErrorContainer = compose(
+  connect(mapStateToProps, mapDispatchToProps),
+  loadable({
+    onUnmount: props => props.clearSystemError(),
+  }),
+)(SystemError);
+

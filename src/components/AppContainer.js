@@ -8,14 +8,14 @@ import 'react-kinetic-core/styles/modal.scss';
 
 import { actions } from '../redux/modules/profile';
 
-import { CatalogContainer } from './CatalogContainer';
-import { CounterContainer } from './CounterContainer';
-import { ProfileContainer } from './ProfileContainer';
-import { Home } from '../components/Home';
+import { CatalogContainer } from '../components/catalog/CatalogContainer';
+import { CounterContainer } from '../components/counter/CounterContainer';
+import { ProfileContainer } from '../components/profile/ProfileContainer';
+import { Home } from '../components/home/Home';
 import { FormSample } from '../components/FormSample';
 import { TeamsContainer } from '../components/teams/TeamsContainer';
-import { SystemErrorContainer } from '../components/SystemErrorContainer';
-import { SubmissionsContainer } from '../components/SubmissionsContainer';
+import { SystemErrorContainer } from '../components/systemError/SystemErrorContainer';
+import { SubmissionsContainer } from '../components/submissions/SubmissionsContainer';
 
 export const App = () =>
   <div className="layout">

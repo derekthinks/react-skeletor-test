@@ -17,7 +17,7 @@ export const defaultState = {
 const reducer = (state = defaultState, action) => {
   switch (action.type) {
     case types.SEARCH_SUBMISSIONS:
-      return { ...state, loading: true };
+      return { ...state, loading: true, errors: [] };
     case types.SET_SUBMISSIONS:
       return { ...state, loading: false, errors: [], all: action.payload };
     default:
