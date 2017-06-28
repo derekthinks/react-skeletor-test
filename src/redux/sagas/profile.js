@@ -1,12 +1,12 @@
 import { takeEvery } from 'redux-saga';
 import { call, put } from 'redux-saga/effects';
+import { ProfileAPI } from 'react-kinetic-core';
 
 import { types, actions } from '../modules/profile';
-import { fetchProfile, putProfile } from '../../helpers/profileRequest';
 
 export function* doUpdateProfile(action) {
   // Call the putProfile helper and once resolved grab errors or the profile.
-  const { profile, errors } = yield call(putProfile, action.payload);
+  const { profile, errors } = yield call(ProfileAPI.putProfile, action.payload);
 
   if (errors) {
     // If there are errors, put an error action into Redux.
@@ -19,7 +19,8 @@ export function* doUpdateProfile(action) {
 
 export function* doFetchProfile() {
   // Call the fetchProfile helper and once resolve grab errors or profile.
-  const { profile, errors } = yield call(fetchProfile);
+  const results = yield call(ProfileAPI.fetchProfile);
+  const { profile, errors } = results;
 
   if (errors) {
     // If there are errors, put an error action into Redux.

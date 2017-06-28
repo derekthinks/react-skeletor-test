@@ -1,8 +1,9 @@
-import { doFetchProfile, doUpdateProfile } from './profile';
 import { put, call } from 'redux-saga/effects';
 import { cloneableGenerator } from 'redux-saga/utils';
+import { ProfileAPI } from 'react-kinetic-core';
 
-import { fetchProfile, putProfile } from '../../helpers/profileRequest';
+import { doFetchProfile, doUpdateProfile } from './profile';
+
 import { actions } from '../modules/profile';
 
 // Mock out the bundle object from a dependency.
@@ -10,6 +11,7 @@ jest.mock('react-kinetic-core', () => ({
   bundle: {
     apiLocation: () => 'space/app/api/v1',
   },
+  ProfileAPI: { putProfile: () => {}, fetchProfile: () => {} },
 }));
 
 describe('profile saga', () => {
@@ -20,7 +22,7 @@ describe('profile saga', () => {
       // Step 1 - trigger the saga - as if watchProfile had seen an action.
       const saga = doFetchProfile();
       // Step 2 - call to fetch the profile.
-      expect(saga.next().value).toEqual(call(fetchProfile));
+      expect(saga.next().value).toEqual(call(ProfileAPI.fetchProfile));
       // Step 3 - that call results in an error, dispatch a fetch error action.
       expect(saga.next(response).value).toEqual(put(actions.fetchProfileError(response.errors)));
     });
@@ -31,7 +33,7 @@ describe('profile saga', () => {
       // Step 1 - trigger the saga - as if watchProfile had seen an action.
       const saga = doFetchProfile();
       // Step 2 - call to fetch the profile.
-      expect(saga.next().value).toEqual(call(fetchProfile));
+      expect(saga.next().value).toEqual(call(ProfileAPI.fetchProfile));
       // Step 3 - that call response with a profile, dispatch a set profile action.
       expect(saga.next(response).value).toEqual(put(actions.setProfile(response.profile)));
     });
@@ -46,7 +48,7 @@ describe('profile saga', () => {
       // Step 1 - trigger the saga - as if watchProfile had seen an action.
       const saga = doUpdateProfile(watchAction);
       // Step 2 - call to update the profile.
-      expect(saga.next().value).toEqual(call(putProfile, watchAction.payload));
+      expect(saga.next().value).toEqual(call(ProfileAPI.putProfile, watchAction.payload));
       // Step 2 - that call results in an error, dispatch a fetch error action.
       expect(saga.next(response).value).toEqual(put(actions.fetchProfileError(response.errors)));
     });
@@ -59,7 +61,7 @@ describe('profile saga', () => {
       // Step 1 - trigger the saga - as if watchProfile had seen an action.
       const saga = doUpdateProfile(watchAction);
       // Step 2 - call to update the profile.
-      expect(saga.next().value).toEqual(call(putProfile, watchAction.payload));
+      expect(saga.next().value).toEqual(call(ProfileAPI.putProfile, watchAction.payload));
       // Step 2 - that call responds with a profile, dispatch a fetch error action.
       expect(saga.next(response).value).toEqual(put(actions.setProfile(response.profile)));
     });
