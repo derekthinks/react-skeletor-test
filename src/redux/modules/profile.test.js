@@ -1,6 +1,3 @@
-jest.mock('../../helpers/profileRequest');
-
-// eslint-disable-next-line import/first
 import reducer, { actions, defaultState, types } from './profile';
 
 describe('profile redux module', () => {

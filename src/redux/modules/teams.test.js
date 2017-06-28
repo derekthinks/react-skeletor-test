@@ -46,8 +46,8 @@ describe('teams redux module', () => {
       const before = { ...defaultState, loading: true };
       const after = reducer(before, action);
       expect(after.loading).toBeFalsy();
-      expect(after.all).toBeInstanceOf(Array);
-      expect(after.all).toHaveLength(1);
+      expect(after.data).toBeInstanceOf(Array);
+      expect(after.data).toHaveLength(1);
     });
 
     test('SET_TEAMS_ERRORS', () => {
