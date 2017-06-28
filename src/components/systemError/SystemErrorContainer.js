@@ -17,4 +17,3 @@ export const SystemErrorContainer = compose(
     onUnmount: props => props.clearSystemError(),
   }),
 )(SystemError);
-

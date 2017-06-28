@@ -5,10 +5,10 @@ import { actions } from '../../redux/modules/team';
 
 import { TeamView } from './TeamView';
 
-export const mapStateToProps = ({ profile, current_team }) => ({
-  team: current_team.data,
-  loading: current_team.loading,
-  errors: current_team.errors,
+export const mapStateToProps = ({ profile, currentTeam }) => ({
+  team: currentTeam.data,
+  loading: currentTeam.loading,
+  errors: currentTeam.errors,
   profile,
 });
 export const mapDispatchToProps = actions;

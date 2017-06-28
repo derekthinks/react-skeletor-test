@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { compose } from 'recompose';
 import { loadable } from 'react-kinetic-core';
 import { Route, Link } from 'react-router-dom';
 
@@ -41,8 +42,9 @@ export const App = () =>
 
 export const mapDispatchToProps = actions;
 
-const LoadableApp = loadable({
-  onMount: props => props.fetchProfile(),
-})(App);
-
-export const AppContainer = connect(null, mapDispatchToProps)(LoadableApp);
+export const AppContainer = compose(
+  connect(null, mapDispatchToProps),
+  loadable({
+    onMount: props => props.fetchProfile(),
+  }),
+)(App);

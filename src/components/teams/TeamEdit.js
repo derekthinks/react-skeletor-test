@@ -8,6 +8,11 @@ const submitEditForm = (values, dispatch, props) => {
   dispatch(actions.updateTeam(props.team.slug, values));
 };
 
+const mapStateToProps = ({ currentTeam }) => ({
+  initialValues: { ...currentTeam.data },
+  apiErrors: currentTeam.errors,
+});
+
 const TeamEditForm = reduxForm(
   {
     form: 'teamEditForm',
@@ -15,10 +20,7 @@ const TeamEditForm = reduxForm(
     onSubmit: submitEditForm,
     validate,
   },
-  ({ current_team }) => ({
-    initialValues: { ...current_team.data },
-    apiErrors: current_team.errors,
-  }),
+  mapStateToProps,
 )(TeamForm);
 
 export const TeamEdit = props => (

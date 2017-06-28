@@ -8,6 +8,10 @@ const submitCreateForm = (values, dispatch) => {
   dispatch(actions.createTeam(values));
 };
 
+const mapStateToProps = ({ currentTeam }) => ({
+  apiErrors: currentTeam.errors,
+});
+
 const TeamCreateForm = reduxForm(
   {
     form: 'teamCreateForm',
@@ -15,7 +19,7 @@ const TeamCreateForm = reduxForm(
     onSubmit: submitCreateForm,
     validate,
   },
-  ({ current_team }) => ({ apiErrors: current_team.errors }),
+  mapStateToProps,
 )(TeamForm);
 
 export const TeamCreate = props => (

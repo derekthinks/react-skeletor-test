@@ -42,12 +42,15 @@ export function* fetchTeamSaga(action) {
 }
 
 export function* updateTeamSaga(action) {
-  const { team, errors } = yield call(TeamsAPI.updateTeam, {
+  const { team, errors, serverError } = yield call(TeamsAPI.updateTeam, {
     teamSlug: action.payload.teamSlug,
     team: action.payload.team,
   });
 
-  if (errors) {
+  if (serverError) {
+    yield put(errorActions.setSystemError(serverError));
+    yield put(push('/system-error'));
+  } else if (errors) {
     yield put(currentActions.setTeamErrors(errors));
   } else {
     yield put(currentActions.setTeam(team));
@@ -55,11 +58,14 @@ export function* updateTeamSaga(action) {
 }
 
 export function* createTeamSaga(action) {
-  const { team, errors } = yield call(TeamsAPI.createTeam, {
+  const { team, errors, serverError } = yield call(TeamsAPI.createTeam, {
     team: action.payload,
   });
 
-  if (errors) {
+  if (serverError) {
+    yield put(errorActions.setSystemError(serverError));
+    yield put(push('/system-error'));
+  } else if (errors) {
     yield put(currentActions.setTeamErrors(errors));
   } else {
     yield put(currentActions.setTeam(team));
@@ -70,11 +76,14 @@ export function* createTeamSaga(action) {
 
 export function* deleteTeamSaga(action) {
   const teamSlug = action.payload;
-  const { errors } = yield call(TeamsAPI.deleteTeam, {
+  const { errors, serverError } = yield call(TeamsAPI.deleteTeam, {
     teamSlug,
   });
 
-  if (errors) {
+  if (serverError) {
+    yield put(errorActions.setSystemError(serverError));
+    yield put(push('/system-error'));
+  } else if (errors) {
     yield put(currentActions.setTeamErrors(errors));
   } else {
     yield put(allActions.removeTeam(teamSlug));

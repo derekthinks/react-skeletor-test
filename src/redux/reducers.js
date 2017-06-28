@@ -8,8 +8,8 @@ import submissionsReducer from './modules/submissions';
 export default {
   counter: counterReducer,
   profile: profileReducer,
-  all_teams: teamsReducer,
-  current_team: teamReducer,
+  allTeams: teamsReducer,
+  currentTeam: teamReducer,
   errors: errorsReducer,
   submissions: submissionsReducer,
 };
