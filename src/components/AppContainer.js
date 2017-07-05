@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { compose } from 'recompose';
-import { loadable } from 'react-kinetic-core';
+import { lifecycle } from 'recompose';
 import { Route, Link } from 'react-router-dom';
 
 import 'bootstrap/dist/css/bootstrap.css';
@@ -42,9 +41,10 @@ export const App = () =>
 
 export const mapDispatchToProps = actions;
 
-export const AppContainer = compose(
-  connect(null, mapDispatchToProps),
-  loadable({
-    onMount: props => props.fetchProfile(),
-  }),
-)(App);
+const hoc1 = lifecycle({
+  componentWillMount() {
+    this.props.fetchProfile();
+  },
+})(App);
+const hoc2 = connect(null, mapDispatchToProps)(hoc1);
+export const AppContainer = hoc2;
