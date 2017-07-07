@@ -28,8 +28,8 @@
     "enzyme-to-json": "^1.5.1",
     "eslint": "^3.19.0",
     "eslint-config-airbnb": "^15.0.1",
-    "eslint-loader": "^1.8.0",
-    "eslint-plugin-import": "^2.6.1",
+    "eslint-loader": "^1.9.0",
+    "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-jest": "^20.0.3",
     "eslint-plugin-jsx-a11y": "^5.0.3",
     "eslint-plugin-react": "^7.1.0",
@@ -45,7 +45,7 @@
     "url-loader": "^0.5.9",
     "webpack": "^2.6.1",
     "webpack-dashboard": "^0.4.0",
-    "webpack-dev-server": "^2.5.0"
+    "webpack-dev-server": "^2.5.1"
   },
   "dependencies": {
     "axios": "^0.16.2",
