@@ -4,7 +4,7 @@ import { lifecycle } from 'recompose';
 import { Route, Link } from 'react-router-dom';
 
 import 'bootstrap/dist/css/bootstrap.css';
-import 'react-kinetic-core/styles/modal.scss';
+import '../styles/scss/master.scss';
 
 import { actions } from '../redux/modules/profile';
 
