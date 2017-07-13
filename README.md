@@ -24,6 +24,10 @@ bundle deployed.
 ## Command Reference
 * `yarn start` will run the project in development mode (requires Kinetic
   Request CE to be running)
+* `yarn start -- --host 0.0.0.0 --public hostname` will run in development mode
+  like the command above but the server will be accessible to other machines.
+  The hostname provided should be the intended hostname used in the browser when
+  connecting to the application.
 * `yarn run build` will build the project in "production" mode (this will create
   a *dist* directory with all of the static files necessary to deploy the
   project)
