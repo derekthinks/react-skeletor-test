@@ -1,8 +1,14 @@
 import React from 'react';
 
-export const RequiresSpaceAdmin = ({ profile, children }) => {
-  if (profile.data.spaceAdmin) {
+export const RequiresSpaceAdmin = ({ profile, children, component }) => {
+  if (!profile.data.spaceAdmin) {
     return <div>{children}</div>;
   }
-  return <h2 style={{ color: 'red' }}>{'Access denied, son.'}</h2>;
+
+  const FailureComponent = component;
+
+  return (
+    <h2 style={{ color: 'red' }}>
+      {FailureComponent ? <FailureComponent /> : 'Access denied.'}
+    </h2>);
 };
