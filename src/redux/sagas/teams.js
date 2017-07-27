@@ -1,14 +1,14 @@
 import { takeEvery } from 'redux-saga';
 import { call, put } from 'redux-saga/effects';
 import { push } from 'connected-react-router';
-import { TeamsAPI } from 'react-kinetic-core';
+import { CoreAPI } from 'react-kinetic-core';
 
 import { actions as allActions, types as allTypes } from '../modules/teams';
 import { actions as currentActions, types as currentTypes } from '../modules/team';
 import { actions as errorActions } from '../modules/errors';
 
 export function* fetchTeamsSaga() {
-  const { teams, errors, serverError } = yield call(TeamsAPI.fetchTeams, {
+  const { teams, errors, serverError } = yield call(CoreAPI.fetchTeams, {
     include: 'memberships,attributes',
     xlatAttributes: true,
   });
@@ -24,7 +24,7 @@ export function* fetchTeamsSaga() {
 }
 
 export function* fetchTeamSaga(action) {
-  const response = yield call(TeamsAPI.fetchTeam, {
+  const response = yield call(CoreAPI.fetchTeam, {
     teamSlug: action.payload,
     include: 'memberships,attributes',
     xlatAttributes: true,
@@ -42,7 +42,7 @@ export function* fetchTeamSaga(action) {
 }
 
 export function* updateTeamSaga(action) {
-  const { team, errors, serverError } = yield call(TeamsAPI.updateTeam, {
+  const { team, errors, serverError } = yield call(CoreAPI.updateTeam, {
     teamSlug: action.payload.teamSlug,
     team: action.payload.team,
   });
@@ -58,7 +58,7 @@ export function* updateTeamSaga(action) {
 }
 
 export function* createTeamSaga(action) {
-  const { team, errors, serverError } = yield call(TeamsAPI.createTeam, {
+  const { team, errors, serverError } = yield call(CoreAPI.createTeam, {
     team: action.payload,
   });
 
@@ -76,7 +76,7 @@ export function* createTeamSaga(action) {
 
 export function* deleteTeamSaga(action) {
   const teamSlug = action.payload;
-  const { errors, serverError } = yield call(TeamsAPI.deleteTeam, {
+  const { errors, serverError } = yield call(CoreAPI.deleteTeam, {
     teamSlug,
   });
 

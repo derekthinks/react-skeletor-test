@@ -3,7 +3,6 @@ import { CoreFormModal } from 'react-kinetic-core';
 import DocumentTitle from 'react-document-title';
 
 export class FormSample extends Component {
-
   constructor(props) {
     super(props);
     this.state = { editing: false };
@@ -25,21 +24,20 @@ export class FormSample extends Component {
         <div className="form-sample">
           {
             this.state.editing
-            ? (
-              <CoreFormModal
-                form="testing"
-                dismissed={this.closeForm}
-                completed={this.closeForm}
-              />
-            ) : (
-              <button type="button" onClick={this.openForm}>
-                Open Form
-              </button>
-            )
+              ? (
+                <CoreFormModal
+                  form="testing"
+                  dismissed={this.closeForm}
+                  completed={this.closeForm}
+                />
+              ) : (
+                <button type="button" onClick={this.openForm}>
+                  Open Form
+                </button>
+              )
           }
         </div>
       </DocumentTitle>
     );
   }
-
 }

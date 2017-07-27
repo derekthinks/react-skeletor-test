@@ -1,13 +1,13 @@
 import { takeEvery } from 'redux-saga';
 import { call, put } from 'redux-saga/effects';
 import { push } from 'connected-react-router';
-import { SubmissionsAPI } from 'react-kinetic-core';
+import { CoreAPI } from 'react-kinetic-core';
 
 import { types, actions } from '../modules/submissions';
 import { actions as errorActions } from '../modules/errors';
 
 export function* searchSubmissionsSaga(action) {
-  const { submissions, serverError } = yield call(SubmissionsAPI.searchSubmissions, {
+  const { submissions, serverError } = yield call(CoreAPI.searchSubmissions, {
     search: action.payload,
   });
 

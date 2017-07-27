@@ -57,10 +57,11 @@ const TeamsSidebar = ({ teams }) => (
   </ul>
 );
 
-export const Teams = ({ loading, errors, teams, profile, match }) => (
-  <RequiresSpaceAdmin profile={profile}>
-    {loading && <Loader />}
-    {!loading &&
+export const Teams = ({ loading, errors, teams, profile, match }) =>
+  loading === true ? (
+    <Loader />
+  ) : (
+    <RequiresSpaceAdmin profile={profile}>
       <div className="row">
         <div className={classNames({ 'col-xs-12': match.isExact, 'col-xs-4': !match.isExact })}>
           <h3>
@@ -77,6 +78,5 @@ export const Teams = ({ loading, errors, teams, profile, match }) => (
           <Route path="/teams/:teamSlug" component={TeamContainer} />
         </div>
       </div>
-    }
-  </RequiresSpaceAdmin>
-);
+    </RequiresSpaceAdmin>
+  );

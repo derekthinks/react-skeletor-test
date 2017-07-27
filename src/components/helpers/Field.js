@@ -8,7 +8,7 @@ const INPUT_PROPS =
 // elements. React has since started to print warnings about these props so the
 // helper below is used to filter out props that react will complain about.
 const filterProps = props =>
-        Seq(props).filter((value, key) => INPUT_PROPS.contains(key)).toJS();
+  Seq(props).filter((value, key) => INPUT_PROPS.contains(key)).toJS();
 
 export const Field = props =>
   <div>

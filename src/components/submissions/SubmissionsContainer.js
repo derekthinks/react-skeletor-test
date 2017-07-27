@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { compose } from 'recompose';
 
-import { loadable, SubmissionsAPI } from 'react-kinetic-core';
+import { loadable, CoreAPI } from 'react-kinetic-core';
 
 import { actions } from '../../redux/modules/submissions';
 
@@ -19,7 +19,7 @@ export const SubmissionsContainer = compose(
   connect(mapStateToProps, mapDispatchToProps),
   loadable({
     onMount: ({ searchSubmissions }) => {
-      const searcher = new SubmissionsAPI.SubmissionSearch()
+      const searcher = new CoreAPI.SubmissionSearch()
         .coreState('Draft')
         .includes(['details', 'values']);
       searchSubmissions(searcher.build());

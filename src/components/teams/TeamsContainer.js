@@ -8,7 +8,7 @@ import { Teams } from './Teams';
 
 export const mapStateToProps = ({ profile, allTeams }) => ({
   teams: allTeams.data,
-  loading: allTeams.loading,
+  loading: allTeams.loading || profile.loading,
   errors: allTeams.errors,
   profile,
 });
