@@ -1,7 +1,7 @@
 import React from 'react';
 
 export const RequiresSpaceAdmin = ({ profile, children, component }) => {
-  if (!profile.data.spaceAdmin) {
+  if (profile.data.spaceAdmin) {
     return <div>{children}</div>;
   }
 
