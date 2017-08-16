@@ -6,7 +6,11 @@ var webpackEnvConfig = process.env.NODE_ENV === 'production'
   : require('./webpack.development');
 
 module.exports = {
-  entry: webpackEnvConfig.entry,
+  entry: [
+    'babel-polyfill',
+    'isomorphic-fetch',
+    './src/index.js',
+  ],
   devtool: webpackEnvConfig.devtool,
   plugins: webpackEnvConfig.plugins,
   devServer: webpackEnvConfig.devServer,

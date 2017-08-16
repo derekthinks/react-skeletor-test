@@ -14,11 +14,6 @@ console.log('Kinetic Request CE is running at',
   config.kineticWebserver);
 
 module.exports = {
-  entry: [
-    'babel-polyfill',
-    'isomorphic-fetch',
-    './src/index.js',
-  ],
   devtool: 'inline-source-map',
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
