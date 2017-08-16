@@ -17,9 +17,7 @@ module.exports = {
   entry: [
     'babel-polyfill',
     'isomorphic-fetch',
-    'react-hot-loader/patch',
-    'webpack-dev-server/client?http://localhost:'+config.localPort,
-    'webpack/hot/only-dev-server',
+    // 'webpack-dev-server/client?http://localhost:'+config.localPort,
     './src/index.js',
   ],
   devtool: 'inline-source-map',
@@ -33,6 +31,7 @@ module.exports = {
     host: 'localhost',
     port: config.localPort,
     hot: true,
+    hotOnly: true,
     overlay: {
       warnings: true,
       errors: true,

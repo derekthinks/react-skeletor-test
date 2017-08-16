@@ -1,4 +1,3 @@
-import { AppContainer as HotLoaderContainer } from 'react-hot-loader';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Route } from 'react-router-dom';
@@ -42,14 +41,13 @@ const rootElement = document.getElementById('root');
 // defined as a function because we want to be able to call it once for the
 // initial page load and again when code changes are detected (see below).
 const render = () => {
+  ReactDOM.unmountComponentAtNode(rootElement);
   ReactDOM.render(
-    <HotLoaderContainer>
-      <Provider store={store}>
-        <ConnectedRouter history={history}>
-          <Route path="/" component={AppContainer} />
-        </ConnectedRouter>
-      </Provider>
-    </HotLoaderContainer>,
+    <Provider store={store}>
+      <ConnectedRouter history={history}>
+        <Route path="/" component={AppContainer} />
+      </ConnectedRouter>
+    </Provider>,
     rootElement);
 };
 
