@@ -33,7 +33,10 @@ module.exports = {
     host: 'localhost',
     port: config.localPort,
     hot: true,
-    overlay: true,
+    overlay: {
+      warnings: true,
+      errors: true,
+    },
     proxy: {
       '/': {
         target: config.kineticWebserver,
