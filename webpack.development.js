@@ -17,7 +17,6 @@ module.exports = {
   entry: [
     'babel-polyfill',
     'isomorphic-fetch',
-    // 'webpack-dev-server/client?http://localhost:'+config.localPort,
     './src/index.js',
   ],
   devtool: 'inline-source-map',
