@@ -21,7 +21,8 @@
       "return": true,
       "arrow": false
     }],
-    "import/prefer-default-export": 0
+    "import/prefer-default-export": 0,
+    "linebreak-style": 0,
   },
   "plugins": [
     "react", "jest"

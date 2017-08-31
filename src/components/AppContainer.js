@@ -16,7 +16,7 @@ import { FormSample } from '../components/FormSample';
 import { TeamsContainer } from '../components/teams/TeamsContainer';
 import { SystemErrorContainer } from '../components/systemError/SystemErrorContainer';
 import { SubmissionsContainer } from '../components/submissions/SubmissionsContainer';
-import { Skeletor } from '../components/skeletor/Skeletor';
+import { CardPage } from '../components/skeletor/CardPage';
 
 export const App = () =>
   <div className="layout">
@@ -39,7 +39,7 @@ export const App = () =>
     <Route path="/form" component={FormSample} />
     <Route path="/teams" component={TeamsContainer} />
     <Route path="/submissions" component={SubmissionsContainer} />
-    <Route path="/skeletor" component={Skeletor} />
+    <Route path="/skeletor" component={CardPage} />
   </div>;
 
 export const mapDispatchToProps = actions;
