@@ -16,6 +16,7 @@ import { FormSample } from '../components/FormSample';
 import { TeamsContainer } from '../components/teams/TeamsContainer';
 import { SystemErrorContainer } from '../components/systemError/SystemErrorContainer';
 import { SubmissionsContainer } from '../components/submissions/SubmissionsContainer';
+import { Skeletor } from '../components/skeletor/Skeletor';
 
 export const App = () =>
   <div className="layout">
@@ -27,6 +28,7 @@ export const App = () =>
       <li><Link to="/form">Form Sample</Link></li>
       <li><Link to="/teams">Teams</Link></li>
       <li><Link to="/submissions">Submissions</Link></li>
+      <li><Link to="/skeletor">Skeletor</Link></li>
     </ul>
     <hr />
     <Route exact path="/" component={Home} />
@@ -37,6 +39,7 @@ export const App = () =>
     <Route path="/form" component={FormSample} />
     <Route path="/teams" component={TeamsContainer} />
     <Route path="/submissions" component={SubmissionsContainer} />
+    <Route path="/skeletor" component={Skeletor} />
   </div>;
 
 export const mapDispatchToProps = actions;

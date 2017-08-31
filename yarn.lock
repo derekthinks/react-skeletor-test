@@ -2,6 +2,13 @@
 # yarn lockfile v1
 
 
+"@trainline/react-skeletor@^0.1.7":
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/@trainline/react-skeletor/-/react-skeletor-0.1.7.tgz#73dcc3a10abe5b5988e6a582adfbd06ad125998d"
+  dependencies:
+    prop-types "^15.5.10"
+    react "^15.5.4"
+
 abab@^1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/abab/-/abab-1.0.3.tgz#b81de5f7274ec4e756d797cd834f303642724e5d"
